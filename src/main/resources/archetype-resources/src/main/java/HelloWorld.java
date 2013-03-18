@@ -6,9 +6,9 @@ package ${package};
 import fr.ybonnel.simpleweb4j.exception.HttpErrorException;
 import fr.ybonnel.simpleweb4j.handlers.Response;
 import fr.ybonnel.simpleweb4j.handlers.Route;
-import ${groupId}.simpleweb4j.handlers.RouteParameters;
+import fr.ybonnel.simpleweb4j.handlers.RouteParameters;
 
-import static ${groupId}.simpleweb4j.SimpleWeb4j.*;
+import static fr.ybonnel.simpleweb4j.SimpleWeb4j.*;
 
 public class HelloWorld {
 
