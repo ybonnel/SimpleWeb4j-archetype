@@ -7,16 +7,30 @@
     <version>${version}</version>
 
     <properties>
+        <!-- SimpleWeb4j use java 1.7 -->
         <project.java.version>1.7</project.java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- plugins versions -->
+        <plugin.compiler.version>3.0</plugin.compiler.version>
+        <plugin.helper.version>1.7</plugin.helper.version>
+        <plugin.surefire.version>2.13</plugin.surefire.version>
+
+        <!-- dependencies versions -->
+        <dependency.simpleweb4j.version>0.0.1</dependency.simpleweb4j.version>
+        <dependency.slf4j.version>1.7.2</dependency.slf4j.version>
+
+        <!-- test dependencies versions -->
+        <test.junit.version>4.11</test.junit.version>
+        <test.http-request.version>4.1</test.http-request.version>
     </properties>
 
     <build>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.0</version>
+                <version>${plugin.compiler.version}</version>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
                     <source>${project.java.version}</source>
@@ -28,7 +42,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-                <version>1.7</version>
+                <version>${plugin.helper.version}</version>
                 <executions>
                     <execution>
                         <id>reserve-port</id>
@@ -47,7 +61,7 @@
             <!-- Pass the port to surefire -->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.13</version>
+                <version>${plugin.surefire.version}</version>
                 <configuration>
                     <argLine>-Dtest.http.port=${test.http.port}</argLine>
                 </configuration>
@@ -60,6 +74,7 @@
             <groupId>fr.ybonnel</groupId>
             <artifactId>simpleweb4j</artifactId>
         </dependency>
+        <!-- Use slf4j for logs -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
@@ -74,6 +89,7 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- Use http-request for unit test -->
         <dependency>
             <groupId>com.github.kevinsawicki</groupId>
             <artifactId>http-request</artifactId>
@@ -86,27 +102,27 @@
             <dependency>
                 <groupId>fr.ybonnel</groupId>
                 <artifactId>simpleweb4j</artifactId>
-                <version>0.0.1</version>
-            </dependency>
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.11</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.kevinsawicki</groupId>
-                <artifactId>http-request</artifactId>
-                <version>4.1</version>
+                <version>${dependency.simpleweb4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>1.7.2</version>
+                <version>${dependency.slf4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-simple</artifactId>
-                <version>1.7.2</version>
+                <version>${dependency.slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${test.junit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.kevinsawicki</groupId>
+                <artifactId>http-request</artifactId>
+                <version>${test.http-request.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
