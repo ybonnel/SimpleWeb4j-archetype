@@ -12,14 +12,14 @@ import org.junit.Test;
 import static fr.ybonnel.simpleweb4j.SimpleWeb4j.stop;
 import static org.junit.Assert.assertEquals;
 
-public class HelloWorldTest {
+public class ${className}Test {
 
     private int port;
 
     @Before
     public void setup() {
         port = Integer.getInteger("test.http.port", 9999);
-        HelloWorld.startServer(port, false);
+        ${className}.startServer(port, false);
     }
 
     @After

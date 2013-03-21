@@ -13,7 +13,7 @@ import static fr.ybonnel.simpleweb4j.SimpleWeb4j.*;
 /**
  * Main class.
  */
-public class HelloWorld {
+public class ${className} {
 
     /**
      * Object return by route.

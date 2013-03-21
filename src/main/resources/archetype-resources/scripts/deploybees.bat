@@ -14,7 +14,7 @@ for /f %%i in ("%SCRIPT_PATH%${symbol_escape}..") do (
 )
 
 set BEES_APP_ID=%1
-set MAIN_CLASS=${package}.HelloWorld
+set MAIN_CLASS=${package}.${className}
 
 if [%BEES_APP_ID%] == [] (
     echo "Use : deploybees <APP_ID>"
