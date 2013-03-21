@@ -45,9 +45,34 @@ public class HelloWorld {
         start(waitStop);
     }
 
+    /**
+     * Get the port.
+     * <ul>
+     *     <li>Heroku : System.getenv("PORT")</li>
+     *     <li>Cloudbees : System.getProperty("app.port")</li>
+     *     <li>default : 9999</li>
+     * </ul>
+     * @return
+     */
+    private static int getPort() {
+        // Heroku
+        String herokuPort = System.getenv("PORT");
+        if (herokuPort != null) {
+            return Integer.parseInt(herokuPort);
+        }
+
+        // Cloudbees
+        String cloudbeesPort = System.getProperty("app.port");
+        if (cloudbeesPort != null) {
+            return Integer.parseInt(cloudbeesPort);
+        }
+
+        // Default port;
+        return 9999;
+    }
+
     public static void main(String[] args) {
-        // Default port 9999.
         // For main, we want to wait the stop.
-        startServer(9999, true);
+        startServer(getPort(), true);
     }
 }
