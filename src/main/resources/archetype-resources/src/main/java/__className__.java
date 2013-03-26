@@ -7,6 +7,13 @@ import fr.ybonnel.simpleweb4j.exception.HttpErrorException;
 import fr.ybonnel.simpleweb4j.handlers.Response;
 import fr.ybonnel.simpleweb4j.handlers.Route;
 import fr.ybonnel.simpleweb4j.handlers.RouteParameters;
+#if( ${withHibernate} == true)
+import fr.ybonnel.simpleweb4j.model.SimpleEntityManager;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+#end
 
 import static fr.ybonnel.simpleweb4j.SimpleWeb4j.*;
 
@@ -18,8 +25,21 @@ public class ${className} {
     /**
      * Object return by route.
      */
+#if( ${withHibernate} == true)
+    @Entity
+#end
     public static class Hello {
-        public String value = "Hello World";
+#if( ${withHibernate} == true)
+        @Id
+        @GeneratedValue
+        public Long id;
+#end
+
+        public String value;
+
+#if( ${withHibernate} == true)
+        public static SimpleEntityManager<Hello, Long> simpleEntityManager = new SimpleEntityManager<>(Hello.class);
+#end
     }
 
     /**
@@ -33,11 +53,28 @@ public class ${className} {
         // Set the path to static resources.
         setPublicResourcesPath("/${packageInPathFormat}/public");
 
+
+        // Insert datas
+#if( ${withHibernate} == true)
+        SimpleEntityManager.openSession().beginTransaction();
+        Hello hello = new Hello();
+        hello.value = "Hello World!";
+        Hello.simpleEntityManager.save(hello);
+        SimpleEntityManager.getCurrentSession().getTransaction().commit();
+        SimpleEntityManager.closeSession();
+#end
+
         // Declare the route "/hello" for GET method whith no param in request payload.
         get(new Route<Void, Hello>("/hello", Void.class) {
             @Override
             public Response<Hello> handle(Void param, RouteParameters routeParams) throws HttpErrorException {
-                return new Response<>(new Hello());
+#if( ${withHibernate} == true)
+                return new Response<>(Hello.simpleEntityManager.getAll().iterator().next());
+#else
+                Hello hello = new Hello();
+                hello.value = "Hello World!";
+                return new Response<>(hello);
+#end
             }
         });
 
@@ -52,7 +89,7 @@ public class ${className} {
      *     <li>Cloudbees : System.getProperty("app.port")</li>
      *     <li>default : 9999</li>
      * </ul>
-     * @return
+     * @return port to use
      */
     private static int getPort() {
         // Heroku

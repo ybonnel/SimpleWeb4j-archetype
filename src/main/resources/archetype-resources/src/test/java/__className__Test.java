@@ -5,6 +5,7 @@
 package ${package};
 
 import com.github.kevinsawicki.http.HttpRequest;
+import com.google.gson.Gson;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,7 +30,8 @@ public class ${className}Test {
 
     @Test
     public void testHelloWorldService() {
-        assertEquals("{${symbol_escape}"value${symbol_escape}":${symbol_escape}"Hello World${symbol_escape}"}", HttpRequest.get("http://localhost:" + port + "/hello").body());
+        ${className}.Hello hello = new Gson().fromJson(HttpRequest.get("http://localhost:" + port + "/hello").body(), ${className}.Hello.class);
+        assertEquals("Hello World!", hello.value);
     }
 
 }

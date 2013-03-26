@@ -20,7 +20,7 @@
         <plugin.dependency.version>2.6</plugin.dependency.version>
 
         <!-- dependencies versions -->
-        <dependency.simpleweb4j.version>0.0.1</dependency.simpleweb4j.version>
+        <dependency.simpleweb4j.version>0.0.2-SNAPSHOT</dependency.simpleweb4j.version>
         <dependency.slf4j.version>1.7.2</dependency.slf4j.version>
 
         <!-- test dependencies versions -->
@@ -113,6 +113,18 @@
         <dependency>
             <groupId>fr.ybonnel</groupId>
             <artifactId>simpleweb4j</artifactId>
+#if( ${withHibernate} != true)
+            <exclusions>
+                <exclusion>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                </exclusion>
+            </exclusions>
+#end
         </dependency>
         <!-- Use slf4j for logs -->
         <dependency>
