@@ -1,0 +1,27 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<div class="row">
+    <div class="span12">
+        <form name="form" class="form-horizontal" novalidate>
+            <fieldset>
+                <div class="control-group" ng-class="{true:'error', false:''}[form.name.${symbol_dollar}dirty && form.name.${symbol_dollar}invalid]">
+                    <label class="control-label">Hello name</label>
+
+                    <div class="controls">
+                        <input type="text" name="name" ng-model="hello.name" required>
+                        <span class="help-inline">Required</span>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary" ng-click="saveHello(hello)">{{submitMessage}}</button>
+                or
+                <a href="#/main" class="btn">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
