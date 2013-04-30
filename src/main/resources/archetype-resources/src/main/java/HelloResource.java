@@ -50,7 +50,7 @@ public class HelloResource extends RestResource<Hello> {
     }
 
     @Override
-    public void create(Hello resource) {
+    public Hello create(Hello resource) {
 #if( ${withHibernate} == true)
         Hello.simpleEntityManager.save(resource);
 #else
@@ -64,6 +64,7 @@ public class HelloResource extends RestResource<Hello> {
         resource.setId(maxId);
         entities.put(maxId, resource);
 #end
+        return resource;
     }
 
     @Override
