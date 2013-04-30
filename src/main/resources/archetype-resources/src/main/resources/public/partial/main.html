@@ -4,7 +4,7 @@
 <div class="row">
     <div class="span12 relative">
         <span></span>
-        <a class="btn btn-success right-btn" href="#/new">Add a hello</a>
+        <a id="addHello" class="btn btn-success right-btn" href="#/new">Add a hello</a>
     </div>
 </div>
 
@@ -35,7 +35,7 @@
                         </div>
                         <div class="modal-footer">
                             <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                            <button class="btn btn-danger" ng-click="delete(hello)">Remove</button>
+                            <button id="remove" class="btn btn-danger" ng-click="delete(hello)">Remove</button>
                         </div>
                     </div>
                 </td>

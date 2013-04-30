@@ -20,12 +20,13 @@
         <plugin.dependency.version>2.6</plugin.dependency.version>
 
         <!-- dependencies versions -->
-        <dependency.simpleweb4j.version>0.0.3-SNAPSHOT</dependency.simpleweb4j.version>
+        <dependency.simpleweb4j.version>0.0.3</dependency.simpleweb4j.version>
         <dependency.slf4j.version>1.7.2</dependency.slf4j.version>
 
         <!-- test dependencies versions -->
         <test.junit.version>4.11</test.junit.version>
         <test.http-request.version>4.1</test.http-request.version>
+        <test.simpleweb4j.test.version>0.0.1</test.simpleweb4j.test.version>
     </properties>
 
     <build>
@@ -147,6 +148,12 @@
             <artifactId>http-request</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>fr.ybonnel</groupId>
+            <artifactId>simpleweb4j-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -175,6 +182,11 @@
                 <groupId>com.github.kevinsawicki</groupId>
                 <artifactId>http-request</artifactId>
                 <version>${test.http-request.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>fr.ybonnel</groupId>
+                <artifactId>simpleweb4j-test</artifactId>
+                <version>${test.simpleweb4j.test.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

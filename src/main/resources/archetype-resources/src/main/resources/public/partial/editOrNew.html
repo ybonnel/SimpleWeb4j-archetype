@@ -9,14 +9,14 @@
                     <label class="control-label">Hello name</label>
 
                     <div class="controls">
-                        <input type="text" name="name" ng-model="hello.name" required>
+                        <input type="text" id="name" name="name" ng-model="hello.name" required>
                         <span class="help-inline">Required</span>
                     </div>
                 </div>
             </fieldset>
 
             <div class="form-actions">
-                <button type="submit" class="btn btn-primary" ng-click="saveHello(hello)">{{submitMessage}}</button>
+                <button id="submit" type="submit" class="btn btn-primary" ng-click="saveHello(hello)">{{submitMessage}}</button>
                 or
                 <a href="#/main" class="btn">Cancel</a>
             </div>
