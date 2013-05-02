@@ -20,6 +20,10 @@ public class ${className} {
         setPort(port);
         // Set the path to static resources.
         setPublicResourcesPath("/${packageInPathFormat}/public");
+#if( ${withHibernate} == true)
+        // Set entities
+        setEntitiesClasses(Hello.class);
+#end
 
         // Declare the route "/hello" for GET method whith no param in request payload.
         resource(new HelloResource("hello"));
