@@ -37,7 +37,7 @@ public class ${className}WebTest extends SimpleWeb4jTest {
 
     @After
     public void tearDown() {
-            stop();
+        stop();
     }
 
     @Test
