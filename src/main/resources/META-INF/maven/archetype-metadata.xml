@@ -9,7 +9,7 @@
             <defaultValue>HelloWorld</defaultValue>
         </requiredProperty>
         <requiredProperty key="withHibernate">
-            <defaultValue>true</defaultValue>
+            <defaultValue>false</defaultValue>
         </requiredProperty>
     </requiredProperties>
     <fileSets>
