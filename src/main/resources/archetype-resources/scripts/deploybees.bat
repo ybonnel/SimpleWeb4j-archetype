@@ -21,7 +21,7 @@ if [%BEES_APP_ID%] == [] (
     goto end
 )
 
-set ARTIFACT_ID=cloudbeestshirt
+set ARTIFACT_ID=${artifactId}
 
 
 for /f %%i in ('unzip -Z -1 %PROJECT_PATH%${symbol_escape}target${symbol_escape}%ARTIFACT_ID%-cloudbees.zip ^| grep jar') do (
